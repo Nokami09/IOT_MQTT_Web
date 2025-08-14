@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IOT Controller Device</title>
   <style>
     :root {
@@ -48,6 +48,7 @@
     }
     .lampu-control {
       display: flex;
+      /* flex-wrap: wrap; */
       align-items: center;
       justify-content: space-between;
       margin-bottom: 20px;
@@ -137,7 +138,7 @@
       color: var(--text);
     }
 
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 300px) {
       .toggle-container{
         margin: 10px 0;
       }
@@ -194,9 +195,9 @@
       const statusDiv = document.createElement('div');
       statusDiv.className = 'status-indicator';
 
-      const ledIcon = document.createElement('div');
-      ledIcon.className = 'led-icon off';
-      ledIcon.id = `led-icon-${lampu.id}`;
+      const lampImg = document.createElement('img');
+      lampImg.id = 'lamp-img-${lampu.id}';
+      lampImg.src = 'img/lamp'
 
       const statusText = document.createElement('div');
       statusText.id = `status-${lampu.id}`;
@@ -278,7 +279,7 @@
           const ledIcon = document.getElementById(`led-icon-${lampu.id}`);
           const btn = document.getElementById(`btn-toggle-${lampu.id}`);
 
-          statusText.textContent = `Status: ${lampu.state}`;
+          statusText.textContent = ``;
           ledIcon.className = `led-icon ${lampu.state === 'ON' ? 'on' : 'off'}`;
           btn.textContent = lampu.state === 'ON' ? 'Matikan' : 'Nyalakan';
 
